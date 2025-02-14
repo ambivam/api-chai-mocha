@@ -1,0 +1,13 @@
+{
+    "newUser": {
+        "name": "John Doe",
+        "username": "johndoe",
+        "email": "johndoe@example.com"
+    },
+    "updatedUser": {
+        "name": "John Doe Updated",
+        "username": "johnupdated",
+        "email": "johnupdated@example.com"
+    },
+    "testUserId": 1
+}

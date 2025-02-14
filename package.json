@@ -1,0 +1,30 @@
+{
+    "name": "api-automation-framework",
+    "version": "1.0.0",
+    "description": "API automation framework using Mocha, Chai, Axios, and Allure reporting with TypeScript.",
+    "main": "src/index.ts",
+    "scripts": {
+        "test": "mocha -r ts-node/register --timeout 10000 --reporter spec 'src/tests/**/*.ts'",
+        "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+       
+    },
+    "dependencies": {
+        "axios": "^1.6.0",
+        "chai": "^4.3.7",
+        "dotenv": "^16.4.3",
+        "winston": "^3.9.0"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.3.7",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "^20.11.27",
+        "allure-js-commons": "^2.0.0",
+        "allure-mocha": "^2.15.1",
+        "eslint": "^8.51.0",
+        "mocha": "^10.2.0",
+        "mocha-allure-reporter": "^1.4.0",
+        "prettier": "^3.1.0",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.4.5"
+    }
+}
