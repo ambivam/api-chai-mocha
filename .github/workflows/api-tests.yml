@@ -1,0 +1,40 @@
+name: API Automation Tests (Dockerized)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build and Run API Tests in Docker
+        run: |
+          docker-compose up --build --exit-code-from test-runner
+
+      - name: Generate Allure Report
+        run: |
+          docker run --rm -v $(pwd)/allure-results:/allure-results -v $(pwd)/allure-report:/allure-report allure/allure-cli generate --clean
+
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results
+          path: allure-results
+          retention-days: 7
+
+      - name: Upload Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-automation-logs
+          path: logs/api-automation.log
+          retention-days: 7

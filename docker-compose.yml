@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  test-runner:
+    build: .
+    container_name: api-test-runner
+    environment:
+      - BASE_URL=${BASE_URL}
+      - LOG_LEVEL=info
+    volumes:
+      - ./allure-results:/app/allure-results
+      - ./logs:/app/logs
+    command: ["npm", "test"]
